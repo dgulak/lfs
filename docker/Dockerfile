@@ -1,5 +1,7 @@
 FROM debian
+
 WORKDIR /home/work
+
 RUN apt-get update
 RUN apt-get install -y \
 bison \
@@ -12,7 +14,10 @@ patch \
 make \
 m4 \
 bzip2 \
-vim
+vim \
+ssh \
+gdb \
+zsh
 
 RUN ln -sf /bin/sh /bin/bash
 
