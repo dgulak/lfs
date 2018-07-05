@@ -6,6 +6,14 @@ declare -A packages=(
 [file-5.32]=tar.gz
 [findutils-4.6.0]=tar.gz
 [gawk-4.2.0]=tar.xz
+[gettext-0.19.8.1.]=tar.xz
+[grep-3.1]=tar.xz
+[gzip-1.9]=tar.xz
+[make-4.2.1]=tar.bz2
+[patch-2.7.6]=tar.xz
+[perl-5.26.1]=tar.xz
+[sed-4.4]=tar.xz
+[tar-1.30=]=tar.xz
 )
 
 export function _make (){
