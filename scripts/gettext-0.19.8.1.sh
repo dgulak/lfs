@@ -5,14 +5,14 @@
 
 # For our temporary set of tools, we only need to build and install three programs from Gettext. 
 cd gettext-tools
-EMACS="no" ./configure --prefix=/tools --disable-shared
+EMACS="no" _configure --prefix=/tools --disable-shared
 
 # Compile the package:
-make -C gnulib-lib
-make -C intl pluralx.c
-make -C src msgfmt
-make -C src msgmerge
-make -C src xgettext
+_make -C gnulib-lib
+_make -C intl pluralx.c
+_make -C src msgfmt
+_make -C src msgmerge
+_make -C src xgettext
 
 # Install the msgfmt, msgmerge and xgettext programs: 
 cp -v src/{msgfmt,msgmerge,xgettext} /tools/bin

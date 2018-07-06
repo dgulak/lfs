@@ -2,7 +2,7 @@
 
 # 5.29. Perl-5.26.1 
 # http://www.linuxfromscratch.org/lfs/view/8.2/chapter05/perl.html
-sh Configure -des -Dprefix=/tools -Dlibs=-lm
+_exec sh Configure -des -Dprefix=/tools -Dlibs=-lm
 _make
     
 # install
