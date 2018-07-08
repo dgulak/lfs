@@ -20,6 +20,9 @@ declare -a PACKAGES=(
 'perl-5.26.1 tar.xz'
 'sed-4.4 tar.xz'
 'tar-1.30 tar.xz'
+'texinfo-6.5.tar.xz'
+'util-linux-2.31.1.tar.xz'
+'xz-5.2.3.tar.xz'
 )
 CUR_PACK=
 MAKE_JOBS_NUM=4
