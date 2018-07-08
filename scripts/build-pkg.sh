@@ -75,9 +75,10 @@ export -f _echo_err \
 	_configure \
 	_make 
 
-#####
 
-#####
+#####----------------------------------------------#####
+#                 Install packages
+
 if [ $PACK_TO_BUILD ] ; then 
    _OLD_PACK=$PACK_TO_BUILD
    PACK_TO_BUILD=`printf -- '%s\n' "${PACKAGES[@]}" | awk '{print $1}' | grep "${PACK_TO_BUILD}-"`
@@ -112,3 +113,4 @@ for p in ${!PACKAGES[*]} ; do
 done
 
 popd > /dev/null
+
