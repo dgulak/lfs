@@ -1,7 +1,9 @@
 #!/bin/bash
 
 mkdir -pv $LFS/lfs-scripts
+mkdir -pv $LFS/lfs-sources
 mount -v --bind /work/scripts $LFS/lfs-scripts
+mount -v --bind /work/sources $LFS/lfs-sources
 
 chroot "$LFS" /tools/bin/env -i \
     HOME=/root                  \
