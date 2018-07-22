@@ -1,0 +1,51 @@
+function _echo_info() {
+   echo -e "\e[32m ${@} \e[0m"
+}
+
+function _echo_err() {
+   echo -e "\e[31m ${@} \e[0m"
+}
+
+function _exec() {
+    CMD=${@}
+    ¦   LOG=${SCRIPT_DIR}/logs/${CUR_PACK}.tmp.log
+    LOG_ERR=${SCRIPT_DIR}/logs/${CUR_PACK}.tmp.err
+
+    echo ${CMD}
+    ${CMD} >>${LOG} 2>>${LOG_ERR} || _echo_err "Failed"
+
+}
+
+function __configure() {
+    CMD="../configure ${@}"
+    ¦   LOG=${SCRIPT_DIR}/logs/${CUR_PACK}.tmp.log
+    LOG_ERR=${SCRIPT_DIR}/logs/${CUR_PACK}.tmp.err
+
+    echo ${CMD}
+    ${CMD} >>${LOG} 2>>${LOG_ERR} || _echo_err "Failed"
+}
+
+function _configure() {
+    CMD="./configure ${@}"
+    ¦   LOG=${SCRIPT_DIR}/logs/${CUR_PACK}.tmp.log
+    LOG_ERR=${SCRIPT_DIR}/logs/${CUR_PACK}.tmp.err
+
+    echo ${CMD}
+    ${CMD} >>${LOG} 2>>${LOG_ERR} || _echo_err "Failed"
+}
+
+function _make () {
+    CMD="make -j${MAKE_JOBS_NUM} ${@}"
+    ¦   LOG=${SCRIPT_DIR}/logs/${CUR_PACK}.tmp.log
+    LOG_ERR=${SCRIPT_DIR}/logs/${CUR_PACK}.tmp.err
+
+    echo ${CMD}
+    ${CMD} >>${LOG} 2>>${LOG_ERR} || _echo_err "Failed"
+}
+
+export -f _echo_err \
+        _echo_info \
+        _exec \
+        _configure \
+        __configure \
+        _make

@@ -1,83 +1,30 @@
 #!/bin/bash
-# You can give it a package name without version and it will build only that package
-# e.g. : $ ./prepare.sh tar
 
+if [ ! $1 ] ; then
+    echo <<EOF 
+Usage: $ $0 (5|6) [pkg]   
+    5|6 - is an LFS chapter; package(s) will be built with regards to the according chapter.
+    pkg - [optional]. Means build only one package.
+EOF
+fi
 
-PACK_TO_BUILD=$1
-SRC_DIR=/work/sources
+source pkg-list-${LFS_CHAPTER}
+source common
+
+LFS_CHAPTER=$1
+PACK_TO_BUILD=$2
+SRC_DIR=/lfs/sources
 SCRIPT_DIR=$PWD
-declare -a PACKAGES=(
-'coreutils-8.29 tar.xz'
-'diffutils-3.6 tar.xz'
-'file-5.32 tar.gz'
-'findutils-4.6.0 tar.gz'
-'gawk-4.2.0 tar.xz'
-'gettext-0.19.8.1 tar.xz'
-'grep-3.1 tar.xz'
-'gzip-1.9 tar.xz'
-'make-4.2.1 tar.bz2'
-'patch-2.7.6 tar.xz'
-'perl-5.26.1 tar.xz'
-'sed-4.4 tar.xz'
-'tar-1.30 tar.xz'
-'texinfo-6.5.tar.xz'
-'util-linux-2.31.1.tar.xz'
-'xz-5.2.3.tar.xz'
-)
 CUR_PACK=
 MAKE_JOBS_NUM=4
-
 
 export  CUR_PACK \
 	SCRIPT_DIR \
 	MAKE_JOBS_NUM
-#####
-
-function _echo_info() {
-   echo -e "\e[32m ${@} \e[0m"
-}
-
-function _echo_err() {
-   echo -e "\e[31m ${@} \e[0m"
-}
-
-function _exec() {
-    CMD=${@}
-        LOG=${SCRIPT_DIR}/logs/${CUR_PACK}.tmp.log 
-    LOG_ERR=${SCRIPT_DIR}/logs/${CUR_PACK}.tmp.err
-
-    echo ${CMD}
-    ${CMD} >>${LOG} 2>>${LOG_ERR} || _echo_err "Failed"
-    
-}
-
-function _configure() {
-    CMD="./configure ${@}"
-        LOG=${SCRIPT_DIR}/logs/${CUR_PACK}.tmp.log 
-    LOG_ERR=${SCRIPT_DIR}/logs/${CUR_PACK}.tmp.err
-    
-    echo ${CMD}
-    ${CMD} >>${LOG} 2>>${LOG_ERR} || _echo_err "Failed"
-}
-
-function _make () {
-    CMD="make -j${MAKE_JOBS_NUM} ${@}"
-        LOG=${SCRIPT_DIR}/logs/${CUR_PACK}.tmp.log 
-    LOG_ERR=${SCRIPT_DIR}/logs/${CUR_PACK}.tmp.err
- 
-    echo ${CMD}
-    ${CMD} >>${LOG} 2>>${LOG_ERR} || _echo_err "Failed"
-}
-
-export -f _echo_err \
-	_echo_info \
-	_exec \
-	_configure \
-	_make 
 
 
 #####----------------------------------------------#####
-#                 Install packages
+# Check if one pkg is selected
 
 if [ $PACK_TO_BUILD ] ; then 
    _OLD_PACK=$PACK_TO_BUILD
@@ -91,6 +38,10 @@ mkdir -p logs
 
 pushd . > /dev/null
 cd $SRC_DIR 
+
+
+#####----------------------------------------------#####
+# Install packages
 
 for p in ${!PACKAGES[*]} ; do
     CUR_PACK=`echo ${PACKAGES[$p]} | awk '{print $1}'`
