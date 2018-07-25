@@ -4,5 +4,5 @@
 # http://www.linuxfromscratch.org/lfs/view/stable/chapter06/file.html
 _configure --prefix=/usr
 _make
-_make check
+_make_check
 _make install

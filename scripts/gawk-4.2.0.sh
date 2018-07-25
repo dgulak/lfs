@@ -4,5 +4,5 @@
 # http://www.linuxfromscratch.org/lfs/view/stable/chapter05/gawk.html
 _configure --prefix=/tools
 _make
-_make check
+_make_check
 _make install

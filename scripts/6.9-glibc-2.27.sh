@@ -33,7 +33,7 @@ CC="gcc -isystem $GCC_INCDIR -isystem /usr/include" \
 unset GCC_INCDIR
 
 _make
-_make check
+_make_check
 
 set -x
 touch /etc/ld.so.conf
