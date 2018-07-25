@@ -1,7 +1,10 @@
 #!/bin/bash
 
+# First load virtual FS and then mount scripts with sources
+./6.2-kernel-fs.sh
 mkdir -pv $LFS/lfs/
-mount -v --bind /work $LFS/lfs
+mount -v --bind /lfs $LFS/lfs
+
 
 chroot "$LFS" /tools/bin/env -i \
     HOME=/root                  \

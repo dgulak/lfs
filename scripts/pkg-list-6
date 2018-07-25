@@ -12,4 +12,6 @@ declare -a PCKGS_6=(
 'm4-1.4.18.tar.xz'
 'bc-1.07.1.tar.gz'
 'binutils-2.30.tar.xz'
+'gmp-6.1.2.tar.xz'
+'mpfr-4.0.1.tar.xz'
 )
