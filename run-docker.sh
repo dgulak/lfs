@@ -6,8 +6,8 @@ if [ ! ${LFS_DIR} ] ; then
 fi
 
 docker run -it --privileged \
+--mount "type=volume,src=lfs-work-dir,dst=/lfs" \
 --mount "type=bind,src=${LFS_DIR}/docker/lfs.mount,dst=/mnt/lfs" \
 --mount "type=bind,src=${LFS_DIR}/scripts,dst=/lfs/scripts" \
---mount "type=volume,src=lfs-work-dir,dst=/lfs" \
 dgulak/lfs:latest zsh
 

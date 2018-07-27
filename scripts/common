@@ -38,7 +38,7 @@ function __run_cmd() {
     LOG_ERR=${SCRIPT_DIR}/logs/${CUR_PACK}.tmp.err
 
     echo ${@}
-    ${@} >>${LOG} 2>>${LOG_ERR} || _echo_err "Failed"
+    { ${@} ;} >>${LOG} 2>>${LOG_ERR} || {_echo_err "Failed" ; exit 1;}
 }
 
 export -f _echo_err     \

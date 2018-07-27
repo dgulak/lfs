@@ -2,8 +2,10 @@
 
 # First load virtual FS and then mount scripts with sources
 ./6.2-kernel-fs.sh
+
+# Pass the scripts and sources to chroot FS
 mkdir -pv $LFS/lfs/
-mount -v --bind /lfs $LFS/lfs
+mount -v --rbind /lfs $LFS/lfs
 
 
 chroot "$LFS" /tools/bin/env -i \
