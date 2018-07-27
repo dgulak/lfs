@@ -2,16 +2,19 @@
 # Important!
 # before building packages virtual fs and directories should be setup and lfs chrooted
 # before building glibc toolchain should be adjusted (chapter 6.10)
-declare -a PCKGS_6=(
-'linux-4.15.3.tar.xz'
-'man-pages-4.15.tar.xz'
-'glibc-2.27.tar.xz'
-'zlib-1.2.11.tar.xz'
+declare -a PACKAGES=(
+'linux-4.15.3 tar.xz'
+'man-pages-4.15 tar.xz'
+'glibc-2.27 tar.xz'
+'zlib-1.2.11 tar.xz'
 'file-5.32 tar.gz'
-'readline-7.0.tar.gz'
-'m4-1.4.18.tar.xz'
-'bc-1.07.1.tar.gz'
-'binutils-2.30.tar.xz'
-'gmp-6.1.2.tar.xz'
-'mpfr-4.0.1.tar.xz'
+'readline-7.0 tar.gz'
+'m4-1.4.18 tar.xz'
+'bc-1.07.1 tar.gz'
+'binutils-2.30 tar.xz'
+'gmp-6.1.2 tar.xz'
+'mpfr-4.0.1 tar.xz'
+'mpc-1.1.0 tar.gz'
+'gcc-7.3.0 tar.xz'
 )
+

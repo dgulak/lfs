@@ -13,6 +13,5 @@ gcc -dumpspecs | sed -e 's@/tools@@g'                   \
     -e '/\*cpp:/{n;s@$@ -isystem /usr/include@}' >      \
     `dirname $(gcc --print-libgcc-file-name)`/specs
 
-
 set +x
 

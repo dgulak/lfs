@@ -8,20 +8,20 @@ Usage: $ $0 (5|6) [pkg]
 EOF
 fi
 
-source pkg-list-${LFS_CHAPTER}
-source common
-
 LFS_CHAPTER=$1
 PACK_TO_BUILD=$2
 SRC_DIR=/lfs/sources
 SCRIPT_DIR=$PWD
 CUR_PACK=
-MAKE_JOBS_NUM=4
+MAKE_JOBS_NUM=3
 
 export  CUR_PACK \
 	SCRIPT_DIR \
 	MAKE_JOBS_NUM
 
+
+source pkg-list-${LFS_CHAPTER}
+source common
 
 #####----------------------------------------------#####
 # Check if one pkg is selected
@@ -29,7 +29,6 @@ export  CUR_PACK \
 if [ $PACK_TO_BUILD ] ; then 
    _OLD_PACK=$PACK_TO_BUILD
    PACK_TO_BUILD=`printf -- '%s\n' "${PACKAGES[@]}" | awk '{print $1}' | grep "${PACK_TO_BUILD}-"`
-   echo "Asked to build only ${PACK_TO_BUILD}"
    test ${PACK_TO_BUILD} || { _echo_err "No package ${_OLD_PACK}" && exit 1;}
 fi
 
@@ -49,14 +48,17 @@ for p in ${!PACKAGES[*]} ; do
 
     test ${PACK_TO_BUILD} && { [ $CUR_PACK != $PACK_TO_BUILD ] && continue ; }
 
-    _echo_info "Building ${CUR_PACK}"
+    SCRIPT_FILE=(/${SCRIPT_DIR}/${LFS_CHAPTER}*-${CUR_PACK}.sh)
+    CHAPTER=${SCRIPT_FILE##/*/}
+    CHAPTER=${CHAPTER%%-*sh}
+    _echo_info "Building LFS ${CHAPTER} ${CUR_PACK}"
 
     pushd . > /dev/null
     
     tar -xf ${TAR}
     cd ${CUR_PACK}
     
-    ${SCRIPT_DIR}/${CUR_PACK}.sh
+    bash -c ${SCRIPT_FILE} 
     
     popd > /dev/null
     rm -rf ${CUR_PACK}
