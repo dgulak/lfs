@@ -1,11 +1,11 @@
 #!/bin/bash
 
 function _echo_info() {
-   echo -e "\e[32m ${@} \e[0m"
+   echo -e "\e[1;32m[INFO] ${@}\e[0m"
 }
 
 function _echo_err() {
-   echo -e "\e[31m ${@} \e[0m"
+   echo -e "\e[1;31m[ERR] ${@}\e[0m"
 }
 
 function __configure() {
@@ -24,7 +24,7 @@ function _make () {
 }
 
 function _make_check() {
-    CMD="make -j ${MAKE_JOBS_NUM} check ${@}"
+    CMD="make -j${MAKE_JOBS_NUM} check ${@}"
     _exec ${CMD}
 }
 
@@ -32,8 +32,8 @@ function _exec() {
     LOG=${SCRIPT_DIR}/logs/${CUR_PACK}.tmp.log
     LOG_ERR=${SCRIPT_DIR}/logs/${CUR_PACK}.tmp.err
 
-    echo ${@}
-    eval ${@} 1>>${LOG} 2>>${LOG_ERR} || { _echo_err "Failed" ; exit 1; }
+    echo "$@"
+    eval "$@" 1>>${LOG} 2>>${LOG_ERR} || { _echo_err "Failed" ; exit 1; }
 }
 
 export -f _echo_err     \

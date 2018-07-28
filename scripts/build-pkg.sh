@@ -44,7 +44,7 @@ cd $SRC_DIR
 
 for p in ${!PACKAGES[*]} ; do
     CUR_PACK=`echo ${PACKAGES[$p]} | awk '{print $1}'`
-    TAR=${PACKAGES[$p]/ /.}
+    ARCH_FILE=${PACKAGES[$p]/ /.}
 
     test ${PACK_TO_BUILD} && { [ $CUR_PACK != $PACK_TO_BUILD ] && continue ; }
 
@@ -55,7 +55,7 @@ for p in ${!PACKAGES[*]} ; do
 
     pushd . > /dev/null
     
-    tar -xf ${TAR}
+    tar -xf ${ARCH_FILE}
     cd ${CUR_PACK}
     
     bash -c ${SCRIPT_FILE} 

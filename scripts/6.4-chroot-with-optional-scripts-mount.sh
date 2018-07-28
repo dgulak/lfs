@@ -7,10 +7,12 @@
 mkdir -pv $LFS/lfs/
 mount -v --rbind /lfs $LFS/lfs
 
+BASH=/tools/bin/bash
+[ -f /bin/bash ] && [ $(readlink /bin/bash) != $BASH ] && BASH=/bin/bash
 
 chroot "$LFS" /tools/bin/env -i \
     HOME=/root                  \
     TERM="$TERM"                \
     PS1='(lfs chroot) \u:\w\$ ' \
     PATH=/bin:/usr/bin:/sbin:/usr/sbin:/tools/bin \
-    /tools/bin/bash --login +h
+    $BASH --login +h
