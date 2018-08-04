@@ -38,5 +38,9 @@ declare -a PACKAGES=(
 'perl-5.26.1 tar.xz'
 'XML-Parser-2.44 tar.gz'
 'intltool-0.51.0 tar.gz'
+'autoconf-2.69 tar.xz'
+'automake-1.15.1 tar.xz'
+'xz-5.2.3 tar.xz'
+'kmod-25 tar.xz'
 )
 

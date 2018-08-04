@@ -5,6 +5,6 @@
 
 _configure --prefix=/usr
 _make
-# 5 tests can fail in LFS
-_make check
+# 5 tests can fail in LFS. 
+_make_check TESTSUITEFLAGS=-j4
 _make install

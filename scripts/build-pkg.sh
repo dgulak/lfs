@@ -2,14 +2,16 @@
 
 if [ ! $1 ] ; then
     echo <<EOF 
-Usage: $ $0 (5|6) [pkg]   
+Usage: $ $0 (5|6) [pkg] [k]
     5|6 - is an LFS chapter; package(s) will be built with regards to the according chapter.
+    k   - keep packages , do not remove after build.
     pkg - [optional]. Means build only one package.
 EOF
 fi
 
 LFS_CHAPTER=$1
 PACK_TO_BUILD=$2
+KEEP_PKG=$3
 SRC_DIR=/lfs/sources
 SCRIPT_DIR=$PWD
 CUR_PACK=
@@ -61,7 +63,7 @@ for p in ${!PACKAGES[*]} ; do
     bash -c ${SCRIPT_FILE} 
     
     popd > /dev/null
-    rm -rf ${CUR_PACK}
+    test $KEEP_PKG || { _echo_info "Removing build dir" ; rm -rf ${CUR_PACK} ; }
 
 done
 
