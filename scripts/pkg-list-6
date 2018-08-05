@@ -42,5 +42,10 @@ declare -a PACKAGES=(
 'automake-1.15.1 tar.xz'
 'xz-5.2.3 tar.xz'
 'kmod-25 tar.xz'
+'gettext-0.19.8.1 tar.xz' 
+'elfutils-0.170 tar.bz2'
+'libffi-3.2.1 tar.gz'
+'openssl-1.1.0g tar.gz'
 )
+
 
