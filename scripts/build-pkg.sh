@@ -30,7 +30,7 @@ source common
 
 if [ $PACK_TO_BUILD ] ; then 
    _OLD_PACK=$PACK_TO_BUILD
-   PACK_TO_BUILD=`printf -- '%s\n' "${PACKAGES[@]}" | awk '{print $1}' | grep "${PACK_TO_BUILD}-"`
+   PACK_TO_BUILD=`printf -- '%s\n' "${PACKAGES[@]}" | awk '{print $1}' | grep "^${PACK_TO_BUILD}-"`
    test ${PACK_TO_BUILD} || { _echo_err "No package ${_OLD_PACK}" && exit 1;}
 fi
 
