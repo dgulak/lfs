@@ -50,6 +50,20 @@ declare -a PACKAGES=(
 'ninja-1.8.2 tar.gz'
 'meson-0.44.0 tar.gz'
 'procps-ng-3.3.12 tar.xz'
+'e2fsprogs-1.43.9 tar.gz'
+'coreutils-8.29 tar.xz'
+'check-0.12.0 tar.gz'
+'diffutils-3.6 tar.xz'
+'gawk-4.2.0 tar.xz'
+'findutils-4.6.0 tar.gz'
+'groff-1.22.3 tar.gz'
+'grub-2.02 tar.xz'
+'less-530 tar.gz'
+'gzip-1.9 tar.xz'
+'iproute2-4.15.0 tar.xz'
+'kbd-2.0.4 tar.xz'
+'libpipeline-1.5.0 tar.gz'
+'make-4.2.1 tar.bz2'
 )
 
 
