@@ -46,6 +46,10 @@ declare -a PACKAGES=(
 'elfutils-0.170 tar.bz2'
 'libffi-3.2.1 tar.gz'
 'openssl-1.1.0g tar.gz'
+'Python-3.6.4 tar.xz'
+'ninja-1.8.2 tar.gz'
+'meson-0.44.0 tar.gz'
+'procps-ng-3.3.12 tar.xz'
 )
 
 
