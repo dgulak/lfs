@@ -2,10 +2,10 @@
 
 if [ ! $1 ] ; then
     echo <<EOF 
-Usage: $ $0 (5|6) [pkg] [k]
-    5|6 - is an LFS chapter; package(s) will be built with regards to the according chapter.
-    k   - keep packages , do not remove after build.
-    pkg - [optional]. Means build only one package.
+Usage: $ $0 (5|6|7) [pkg] [k]
+    5 or 6 or 7         - an LFS chapter; package(s) will be built with regards to the according chapter.
+    pkg                 - [optional]. Means build only one package.
+    k                   - keep packages, do not remove after build.
 EOF
 fi
 
@@ -22,8 +22,8 @@ export  CUR_PACK \
 	MAKE_JOBS_NUM
 
 
-source pkg-list-${LFS_CHAPTER}
 source common
+source pkg-list-${LFS_CHAPTER} || { _echo_err "Chapter number is not valid" echo ; exit ; }
 
 #####----------------------------------------------#####
 # Check if one pkg is selected
@@ -58,7 +58,7 @@ for p in ${!PACKAGES[*]} ; do
     pushd . > /dev/null
     
     tar -xf ${ARCH_FILE}
-    cd ${CUR_PACK} 2&>1 > /dev/null || cd $(find . -name "${CUR_PACK%%-*}*" -type d) || { _echo_err 'Cannot "cd" to package dir' ; exit 1 ; }
+    cd  ${CUR_PACK}  || cd $(find . -name "${CUR_PACK%%-*}*" -type d) || { _echo_err 'Cannot "cd" to package dir' ; exit 1 ; }
     
     _echo_info "In $PWD"
     bash -c ${SCRIPT_FILE} 

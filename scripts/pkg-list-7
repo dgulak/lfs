@@ -1,0 +1,4 @@
+#!/bin/bash
+declare -a PACKAGES=(
+'lfs-bootscripts-20170626 tar.bz2'
+)
