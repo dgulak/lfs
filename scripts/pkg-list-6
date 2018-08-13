@@ -70,6 +70,9 @@ declare -a PACKAGES=(
 'eudev-3.2.5 tar.gz'
 'util-linux-2.31.1 tar.xz'
 'man-db-2.8.1 tar.xz'
+'tar-1.30 tar.xz'
+'texinfo-6.5 tar.xz'
+'vim-8.0.586 tar.bz2'
 )
 
 
