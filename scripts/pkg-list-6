@@ -64,6 +64,12 @@ declare -a PACKAGES=(
 'kbd-2.0.4 tar.xz'
 'libpipeline-1.5.0 tar.gz'
 'make-4.2.1 tar.bz2'
+'patch-2.7.6 tar.xz'
+'sysklogd-1.5.1 tar.gz'
+'sysvinit-2.88dsf tar.bz2'
+'eudev-3.2.5 tar.gz'
+'util-linux-2.31.1 tar.xz'
+'man-db-2.8.1 tar.xz'
 )
 
 
