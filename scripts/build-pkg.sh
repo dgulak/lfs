@@ -58,8 +58,9 @@ for p in ${!PACKAGES[*]} ; do
     pushd . > /dev/null
     
     tar -xf ${ARCH_FILE}
-    cd ${CUR_PACK}
+    cd ${CUR_PACK} 2&>1 > /dev/null || cd $(find . -name "${CUR_PACK%%-*}*" -type d) || { _echo_err 'Cannot "cd" to package dir' ; exit 1 ; }
     
+    _echo_info "In $PWD"
     bash -c ${SCRIPT_FILE} 
     
     popd > /dev/null
